@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,20 +23,27 @@ public class LauncherFrame {
 
 	private void initialize() {
 		
-		URL fontUrl;
+		URL fontUrl = null;
 		try {
-			fontUrl = new URL("");
+			fontUrl = new URL("https://github.com/birajrai/Launcher/raw/main/libs/Magical%20Story.ttf");
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Font font = null;
 		try {
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream()).deriveFont(Font.BOLD, 30);
+			font = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream()).deriveFont(Font.BOLD, 30);
 		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Font fontSmall = null;
+		try {
+			fontSmall = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream()).deriveFont(Font.BOLD, 18);
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -54,9 +62,19 @@ public class LauncherFrame {
 		JLabel label = new JLabel();
 		label.setText("Neppixel Launcher");
 		label.setForeground(Color.white);
-		label.setBounds(3, 3, 100, 100);
+		label.setBounds(3, 3, 0, 0);
 		label.setVisible(true);
+		label.setFont(font);
 		panel.add(label);
+		
+		JButton button = new JButton();
+		button.setFont(fontSmall);
+		button.setText("Launch Neppixel");
+		button.setBounds(250, 270, 350, 290);
+		button.setBackground(new Color(114, 137, 218));
+		button.setForeground(Color.WHITE);
+		button.setVisible(true);
+		panel.add(button);
 		
 		
 		frame.getContentPane().add(panel);
