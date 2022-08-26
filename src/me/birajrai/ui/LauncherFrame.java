@@ -1,6 +1,11 @@
 package me.birajrai.ui;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +22,25 @@ public class LauncherFrame {
 
 	private void initialize() {
 		
-		frame = new JFrame("Neppixel");
+		URL fontUrl;
+		try {
+			fontUrl = new URL("");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream()).deriveFont(Font.BOLD, 30);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		frame = new JFrame("Neppixel Launcher");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(760, 415, 600, 300);
 		frame.setVisible(true);
