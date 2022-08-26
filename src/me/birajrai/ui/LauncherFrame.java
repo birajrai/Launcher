@@ -3,6 +3,8 @@ package me.birajrai.ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -11,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import me.birajrai.Main;
 
 public class LauncherFrame {
 
@@ -74,6 +78,13 @@ public class LauncherFrame {
 		button.setBackground(new Color(114, 137, 218));
 		button.setForeground(Color.WHITE);
 		button.setVisible(true);
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Thread(() -> { Main.launch();}).start();
+			}
+		});
 		panel.add(button);
 		
 		
